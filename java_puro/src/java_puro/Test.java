@@ -3,6 +3,11 @@ package java_puro;
 import java_puro.singleton.SingletonEager;
 import java_puro.singleton.SingletonLazy;
 import java_puro.singleton.SingletonLazyHolder;
+import java_puro.strategy.AggressiveStrategy;
+import java_puro.strategy.DefensiveStrategy;
+import java_puro.strategy.NormalStrategy;
+import java_puro.strategy.Robot;
+import java_puro.strategy.Strategy;
 
 public class Test {
 
@@ -25,6 +30,21 @@ public class Test {
 		lazyHolder = SingletonLazyHolder.getInstance();
 		System.out.println(lazyHolder);
 		
+		// Strategy - robot example
+		
+		Strategy defensive = new DefensiveStrategy();
+		Strategy normal = new NormalStrategy();
+		Strategy aggressive = new AggressiveStrategy();
+		
+		Robot robot = new Robot();
+		robot.setStrategy(normal);
+		robot.move();
+		robot.setStrategy(defensive);
+		robot.move();
+		robot.setStrategy(aggressive);
+		robot.move();
+		robot.move();
+
 	}
 
 }
